@@ -10,14 +10,12 @@
         $scope.lunchDishesCsv = "";
         $scope.message = "";
         $scope.getLunchDishes = function () {
-            if ($scope.lunchDishesCsv.trim() == "") {
-                return [];
-            }
             return $scope.lunchDishesCsv
                 .split(",")
                 .map(function (str) {
                     return str.trim()
-                });
+                })
+                .filter(Boolean);
         };
         $scope.numberOfDishes = function() {
             return $scope.getLunchDishes().length;
