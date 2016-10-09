@@ -1,5 +1,5 @@
 <div ng-repeat="item in narrowIt.items">
-    {{item['name']}}
+    {{item['name']}} {{item.short_name}} {{item.description}}
     <button ng-click="narrowIt.onRemove({index: $index});">
         Don't want this one!
     </button>
