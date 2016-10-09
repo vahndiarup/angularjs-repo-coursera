@@ -15,7 +15,7 @@
                 items: "<",
                 onRemove: '&'
             },
-            templateUrl: '../directives/foundItems.html',
+            templateUrl: '../module3-solution/directives/foundItems.html',
             controller: NarrowItDownController,
             controllerAs: 'narrowIt',
             bindToController: true
