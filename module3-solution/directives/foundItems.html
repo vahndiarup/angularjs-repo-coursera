@@ -1,0 +1,6 @@
+<div ng-repeat="item in narrowIt.items">
+    {{item['name']}}
+    <button ng-click="narrowIt.onRemove({index: $index});">
+        Don't want this one!
+    </button>
+</div>
