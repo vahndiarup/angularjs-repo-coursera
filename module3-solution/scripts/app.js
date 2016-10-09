@@ -13,7 +13,8 @@
         var ddo = {
             scope: {
                 items: "<",
-                onRemove: '&'
+                onRemove: '&',
+                errorMessage: "<"
             },
             templateUrl: '../module3-solution/directives/foundItems.html',
             controller: NarrowItDownController,
@@ -42,7 +43,12 @@
                 filteredItems =  foundItems.menu_items.filter(function(obj) {
                     return obj['name'].toLowerCase().includes(searchTermLower);
                 });
-                return filteredItems;
+                if (searchTerm == '') {
+                    return [];
+                }
+                else {
+                    return filteredItems;
+                }
             });
         };
 
@@ -57,12 +63,19 @@
         var narrowIt = this;
         narrowIt.found = [];
         narrowIt.searchTerm = '';
+        narrowIt.errorMessage = '';
 
         narrowIt.getMatchedMenuItems = function(searchTerm) {
 
             var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
             promise.then(function (response) {
                     narrowIt.found = response;
+                    if (narrowIt.found.length == 0) {
+                        narrowIt.errorMessage = 'Nothing Found';
+                    }
+                    else {
+                        narrowIt.errorMessage = '';
+                    }
                 })
                 .catch(function (error) {
                     console.log(error);
